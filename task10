@@ -1,0 +1,351 @@
+    Q.NO:1
+public class Person {
+    // Attributes
+    private String name;
+    private int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Creating a Person object
+        Person person = new Person("John Doe", 25);
+
+        // Accessing the attributes using getters
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+    }
+}
+
+Q.NO:2
+public class Employee {
+    // Attributes
+    private int id;
+    private String firstName;
+    private String lastName;
+    private int salary;
+
+    // Constructor
+    public Employee(int id, String firstName, String lastName, int salary) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+    }
+
+    // Getter for id
+    public int getId() {
+        return id;
+    }
+
+    // Getter for firstName
+    public String getFirstName() {
+        return firstName;
+    }
+
+    // Getter for lastName
+    public String getLastName() {
+        return lastName;
+    }
+
+    // Getter for salary
+    public int getSalary() {
+        return salary;
+    }
+
+    // Setter for salary
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    // Method to get annual salary
+    public int getAnnualSalary() {
+        return salary * 12;
+    }
+
+    // Method to raise salary by a percentage
+    public int raiseSalary(int percent) {
+        salary += salary * percent / 100;
+        return salary;
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Employee[id=" + id + ", name=" + firstName + " " + lastName + ", salary=" + salary + "]";
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        Employee emp = new Employee(1, "John", "Doe", 5000);
+        System.out.println(emp); // Output: Employee[id=1, name=John Doe, salary=5000]
+        System.out.println("Annual Salary: " + emp.getAnnualSalary()); // Output: Annual Salary: 60000
+
+        emp.raiseSalary(10);
+        System.out.println("New Salary after 10% raise: " + emp.getSalary()); // Output: New Salary after 10% raise: 5500
+    }
+}
+
+Q.NO:3
+public class Circle {
+    // Data member
+    private double radius;
+
+    // No-argument constructor
+    public Circle() {
+        this.radius = 1.0; // Default radius
+    }
+
+    // Constructor with one argument
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Constructor with two arguments (additional feature for completeness, but typically only one argument is needed)
+    public Circle(double radius, boolean dummy) {
+        this.radius = radius;
+    }
+
+    // Method to calculate the circumference
+    public double calculateCircumference() {
+        return 2 * Math.PI * radius;
+    }
+
+    // Getter for radius
+    public double getRadius() {
+        return radius;
+    }
+
+    // Setter for radius
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        // Create a circle with no arguments
+        Circle circle1 = new Circle();
+        System.out.println("Circle 1 radius: " + circle1.getRadius());
+        System.out.println("Circle 1 circumference: " + circle1.calculateCircumference());
+
+        // Create a circle with one argument
+        Circle circle2 = new Circle(5.0);
+        System.out.println("Circle 2 radius: " + circle2.getRadius());
+        System.out.println("Circle 2 circumference: " + circle2.calculateCircumference());
+
+        // Create a circle with two arguments
+        Circle circle3 = new Circle(7.0, true);
+        System.out.println("Circle 3 radius: " + circle3.getRadius());
+        System.out.println("Circle 3 circumference: " + circle3.calculateCircumference());
+    }
+}
+Q.NO:4
+public class Account {
+    // Data member to store the balance
+    private double balance;
+
+    // No-argument constructor initializing balance to 0.0
+    public Account() {
+        this.balance = 0.0;
+    }
+
+    // Constructor with two arguments: initial balance
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    // Method to deposit an amount to the balance
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Deposit amount must be positive");
+        }
+    }
+
+    // Method to withdraw an amount from the balance
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrew: " + amount);
+        } else if (amount > balance) {
+            System.out.println("Insufficient funds");
+        } else {
+            System.out.println("Withdrawal amount must be positive");
+        }
+    }
+
+    // Method to get the current balance
+    public double getBalance() {
+        return balance;
+    }
+
+    public static void main(String[] args) {
+        // Testing the Account class
+        Account account1 = new Account(); // Using no-argument constructor
+        Account account2 = new Account(1000.0); // Using constructor with initial balance
+
+        // Test deposit and withdraw on account1
+        account1.deposit(500.0);
+        account1.withdraw(100.0);
+        System.out.println("Account1 Balance: " + account1.getBalance());
+
+        // Test deposit and withdraw on account2
+        account2.deposit(500.0);
+        account2.withdraw(2000.0); // This should print "Insufficient funds"
+        account2.withdraw(1000.0);
+        System.out.println("Account2 Balance: " + account2.getBalance());
+    }
+}
+Q.NO:5
+public class Tea {
+
+    private boolean hasMilk;
+    private boolean hasSugar;
+
+    // Constructor to initialize tea without milk and sugar
+    public Tea() {
+        this.hasMilk = false;
+        this.hasSugar = false;
+    }
+
+    // Method to prepare basic tea
+    public void prepareTea() {
+        System.out.println("Boiling water...");
+        System.out.println("Adding tea leaves...");
+        System.out.println("Tea is ready.");
+    }
+
+    // Method to add milk to the tea
+    public void addMilk() {
+        if (!hasMilk) {
+            hasMilk = true;
+            System.out.println("Adding milk to the tea...");
+        } else {
+            System.out.println("Milk is already added to the tea.");
+        }
+    }
+
+    // Method to add sugar to the tea
+    public void addSugar() {
+        if (!hasSugar) {
+            hasSugar = true;
+            System.out.println("Adding sugar to the tea...");
+        } else {
+            System.out.println("Sugar is already added to the tea.");
+        }
+    }
+
+    // Method to display the tea status
+    public void displayTea() {
+        String teaStatus = "Tea with " +
+                (hasMilk ? "milk" : "no milk") +
+                " and " +
+                (hasSugar ? "sugar" : "no sugar") +
+                ".";
+        System.out.println(teaStatus);
+    }
+
+    public static void main(String[] args) {
+        Tea myTea = new Tea();
+        myTea.prepareTea();
+        myTea.addMilk();
+        myTea.addSugar();
+        myTea.displayTea();
+    }
+}
+
+Q.NO:6
+// Parent class
+class Tea {
+    public void prepareTea() {
+        System.out.println("Preparing tea...");
+    }
+}
+
+// BlackTen class
+class BlackTea extends Tea {
+    @Override
+    public void prepareTea() {
+        System.out.println("Preparing Black Tea...");
+        // Add specific ingredients and brewing time for Black Tea
+    }
+}
+
+// GreenTea class
+class GreenTea extends Tea {
+    @Override
+    public void prepareTea() {
+        System.out.println("Preparing Green Tea...");
+        // Add specific ingredients and brewing time for Green Tea
+    }
+}
+
+// HerbalTea class
+class HerbalTea extends Tea {
+    @Override
+    public void prepareTea() {
+        System.out.println("Preparing Herbal Tea...");
+        // Add specific ingredients and brewing time for Herbal Tea
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Tea blackTea = new BlackTea();
+        blackTea.prepareTea();
+
+        Tea greenTea = new GreenTea();
+        greenTea.prepareTea();
+
+        Tea herbalTea = new HerbalTea();
+        herbalTea.prepareTea();
+    }
+}
+
+Q.NO:7
+class Test {
+    void display() {
+        System.out.println("Inside Test class");
+    }
+}
+
+class TestClass1 extends Test {
+    void display() {
+        System.out.println("Inside TestClass1");
+    }
+}
+
+class TestClass2 extends Test {
+    void display() {
+        System.out.println("Inside TestClass2");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Test[] tests = new Test[3];
+        tests[0] = new Test();
+        tests[1] = new TestClass1();
+        tests[2] = new TestClass2();
+
+        for (int i = 0; i < tests.length; i++) {
+            tests[i].display();
+        }
+    }
+}
